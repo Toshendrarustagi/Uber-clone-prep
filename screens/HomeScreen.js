@@ -3,6 +3,7 @@ import React from "react";
 import GlobalStyles from "../GlobalStyles";
 import tw from "twrnc";
 import NavOptions from "../components/NavOptions";
+import NavFavourites from "../components/NavFavourites";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_API_KEY } from "@env";
 import { useDispatch } from "react-redux";
@@ -33,13 +34,13 @@ const HomeScreen = () => {
             },
           }}
           onPress={(data, details = null) => {
-              dispatch(
-                setOrigin({
-                  location: details.geometry.location,
-                  description: data.description,
-                })
-              );
-              dispatch(setDestination(null));
+            dispatch(
+              setOrigin({
+                location: details.geometry.location,
+                description: data.description,
+              })
+            );
+            dispatch(setDestination(null));
           }}
           fetchDetails={true}
           returnKeyType={"search"}
@@ -53,6 +54,7 @@ const HomeScreen = () => {
           debounce={400}
         />
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );
